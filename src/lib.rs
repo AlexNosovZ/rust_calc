@@ -40,10 +40,14 @@ where
     Ok(left.into() / right.into())
 }
 
+pub fn is_oper(c: char) -> bool {
+    matches!(c, '+' | '-' | '*' | '/')
+}
+
 #[cfg(test)]
 mod tests {
     const EPS: f64 = 10e-10;
-    use crate::{add, mul, sub, div};
+    use crate::{add, div, mul, sub, is_oper};
     #[test]
     fn add_works() {
         let result = add(2, 2);
@@ -68,6 +72,13 @@ mod tests {
     #[test]
     fn div_works() {
         let result = div(10.0, 5.0).unwrap();
-        assert!(result - 2.0 < EPS); 
+        assert!(result - 2.0 < EPS);
+    }
+    #[test]
+    fn is_oper_works(){
+        assert_eq!(is_oper('+'), true);
+        assert_eq!(is_oper('-'), true);
+        assert_eq!(is_oper('*'), true);
+        assert_eq!(is_oper('/'), true);
     }
 }
