@@ -1,3 +1,4 @@
+#[allow(dead_code)]
 fn push_operand<T>(stack: &mut Vec<T>, operand: T) {
     stack.push(operand);
 }
