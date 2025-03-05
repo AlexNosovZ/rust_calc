@@ -1,3 +1,5 @@
+pub mod stacks;
+
 const EPS: f64 = 10e-10;
 #[derive(Debug)]
 pub enum OpError {
@@ -47,7 +49,7 @@ pub fn is_oper(c: char) -> bool {
 #[cfg(test)]
 mod tests {
     const EPS: f64 = 10e-10;
-    use crate::{add, div, mul, sub, is_oper};
+    use crate::{add, div, is_oper, mul, sub};
     #[test]
     fn add_works() {
         let result = add(2, 2);
@@ -75,7 +77,7 @@ mod tests {
         assert!(result - 2.0 < EPS);
     }
     #[test]
-    fn is_oper_works(){
+    fn is_oper_works() {
         assert_eq!(is_oper('+'), true);
         assert_eq!(is_oper('-'), true);
         assert_eq!(is_oper('*'), true);
